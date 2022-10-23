@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:Skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             NavigationPage.HasNavigationBar="false"
+             x:Class="EmpFo.Pages.AddPage" 
+             BackgroundImageSource="bg3.jpg">
+    
+    <VerticalStackLayout>
+        <Skia:SKLottieView Source="hiring.json"                              
+                               RepeatCount="-10"                               
+                               HorizontalOptions="Center"
+                                                             
+                               HeightRequest="320" WidthRequest="500"/>
+
+        <!--<Image  x:Name="Image_Upload" HeightRequest="400" WidthRequest="400" HorizontalOptions="Center"/>
+        <Label Text="Upload Image" FontSize="32" HorizontalOptions="Center"/>
+        <Button Text="Upload" x:Name="UploadImage" VerticalOptions="Center" Clicked="UploadImage_Clicked" />-->
+
+        <StackLayout
+            x:Name="progressLoading"
+            IsVisible="False"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="Transparent">
+            <ActivityIndicator
+                x:Name="ai"
+                IsRunning="True" IsVisible="True"
+                HorizontalOptions="CenterAndExpand"
+                Color="{StaticResource ButtonColor}" Margin="0,0,0,0" />
+            <Label x:Name="lblorderstate" FontSize="20" FontFamily="facompa" Text="We're processing your request, please wait..." Margin="20" HorizontalOptions="CenterAndExpand" TextColor="WhiteSmoke"/>
+        </StackLayout>
+
+        <Grid Margin="0,-40,0,0" ColumnDefinitions="*,*" RowDefinitions="AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO" RowSpacing="8">
+
+            <Label Text="First Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="1"/>
+            <Entry Grid.Row="2" Grid.Column="0"  FontFamily="facompa" x:Name="Fname"
+                PlaceholderColor="Black" TextColor="Black" Placeholder="First Name:" />
+
+            <Label Text="Middle Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="1" Grid.Column="2"/>
+            <Entry Grid.Row="2" Grid.Column="2"  FontFamily="facompa" x:Name="Mname"
+                PlaceholderColor="Black" TextColor="Black" Placeholder="Middle Name:" />
+
+            <Label Text="Last Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="3"/>
+            <Entry Grid.Row="4" Grid.Column="0"  FontFamily="facompa" x:Name="Lname"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Last Name:"  />
+
+            <Label Text="Email" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="5"/>
+            <Entry Grid.Row="6" Grid.Column="0"  FontFamily="facompa" x:Name="Email"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Email: Sample@gmail.com"  />
+
+            <Label Text="Phone" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="7"/>
+            <Entry Grid.Row="8" Grid.Column="0"  FontFamily="facompa" x:Name="phonenum"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Phone #/Telephone #"  />
+
+            <Label Text="Home Address" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="9"/>
+            <Entry Grid.Row="10" Grid.Column="0"  FontFamily="facompa"  x:Name="Haddress"       
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Home Address:"  />
+
+            <Label Text="Position" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="11"/>
+            <Entry Grid.Row="12" Grid.Column="0"  FontFamily="facompa" x:Name="JobP"
+               Grid.ColumnSpan="2" PlaceholderColor="Black" TextColor="Black" Placeholder="Position:" />
+
+
+            <Button Margin="0,5,0,30" Grid.Row="13" Grid.Column="0" Text="SAVE" 
+                    FontFamily="facompa"
+                    TextColor="White"
+                    WidthRequest="200"
+                    x:Name="BTN_addEmp"
+                    Clicked="BTN_addEmp_Clicked"                   
+                    BackgroundColor="#2192FF" />
+
+            <Button  Margin="0,5,0,30" Grid.Row="13" Grid.Column="2" Text="EXIT" 
+                     FontFamily="facompa"
+                     TextColor="White"
+                     x:Name="btncancel" 
+                     Clicked="btncancel_Clicked"                     
+                     WidthRequest="200" 
+                     BackgroundColor="#2192FF" />
+
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

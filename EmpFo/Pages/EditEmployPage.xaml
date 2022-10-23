@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             NavigationPage.HasNavigationBar="false"
+             x:Class="EmpFo.Pages.EditEmployPage"             
+             BackgroundImageSource="bg3.jpg">
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" >
+
+        <Skia:SKLottieView Source="updated-graphic.json"                              
+                               RepeatCount="-1"                               
+                               HorizontalOptions="Center"
+                               
+                               HeightRequest="320" WidthRequest="500"/>
+
+        <StackLayout
+            x:Name="progressLoading"
+            IsVisible="False"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="Transparent">
+            <ActivityIndicator
+                x:Name="ai"
+                IsRunning="True" IsVisible="True"
+                HorizontalOptions="CenterAndExpand"
+                Color="{StaticResource ButtonColor}" Margin="0,0,0,0" />
+            <Label x:Name="lblorderstate" FontSize="20" FontFamily="facompa"  Text="We're processing your request, please wait..." Margin="20" HorizontalOptions="CenterAndExpand" TextColor="WhiteSmoke"/>
+        </StackLayout>
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO" VerticalOptions="CenterAndExpand" RowSpacing="10" >
+            <Label Text="First Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="0"/>
+            <Entry Grid.Row="1" Grid.Column="0"                    
+                   
+                   TextColor="Black"
+                   Placeholder="First Name:"
+                   PlaceholderColor="Black" 
+                                      
+                   x:Name="entryFirst"/>
+
+            <Label Text="Middle Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="0" Grid.Column="2" />
+            
+            <Entry Grid.Row="1" Grid.Column="2" 
+                   Grid.ColumnSpan="2" 
+                   Placeholder="Middle Name:" 
+                   TextColor="Black"
+                   PlaceholderColor="Black" 
+                                     
+                   x:Name="entryMname"/>
+
+            <Label Text="Last Name" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="2"/>
+            <Entry Grid.Row="3" Grid.Column="0" 
+                   Grid.ColumnSpan="2" 
+                   Placeholder="Last Name:" 
+                   TextColor="Black"
+                   PlaceholderColor="Black" 
+                                   
+                   x:Name="entryLast"/>
+
+            <Label Text="Home Address" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="4"/>
+            <Entry Grid.Row="5" Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Placeholder="Home Address:" 
+                   TextColor="Black"
+                   PlaceholderColor="Black"                                    
+                   x:Name="entryHaddress"/>
+
+            <Label Text="Phone #/Telephone #" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="6"/>
+            <Entry Grid.Row="7" Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Placeholder="Phone #/Telephone #:" 
+                   PlaceholderColor="Black"
+                   
+                   TextColor="Black"
+                   x:Name="entryphone"/>
+
+            <Label Text="Position" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="8"/>
+            <Entry Grid.Row="9" Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Placeholder="Job Position:" 
+                   PlaceholderColor="Black"
+                   
+                   TextColor="Black"
+                   x:Name="entryjobpos"/>
+
+
+            <Button Grid.Row="10" Grid.Column="0" Text="SAVE" x:Name="BTN_NAMIE" Clicked="BTN_Update_Clicked" 
+                    WidthRequest="150" Margin="0,10,0,0" TextColor="White" Background="#2192FF"/>
+            
+            <Button Grid.Row="10" Grid.Column="1" Text="CANCEL" x:Name="BTN_exit" Clicked="BTN_exit_Clicked"
+                    WidthRequest="150" Margin="0,10,0,0" TextColor="White" Background="#2192FF"/>
+            </Grid>
+        
+    </VerticalStackLayout>
+</ContentPage>

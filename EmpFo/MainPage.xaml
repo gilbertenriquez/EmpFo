@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="EmpFo.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"            
+             BackgroundImageSource="bg3.jpg">
+
+
+
+    <VerticalStackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+
+        <Skia:SKLottieView Source="woffice.json"                              
+                               RepeatCount="-1"                               
+                               HorizontalOptions="Center"
+                               
+                               HeightRequest="320" WidthRequest="500"/>
+
+        <StackLayout
+            x:Name="progressLoading"
+            IsVisible="False"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="Transparent">
+            <ActivityIndicator
+                x:Name="ai"
+                IsRunning="True" IsVisible="True"
+                HorizontalOptions="CenterAndExpand"
+                Color="{StaticResource ButtonColor}" Margin="0,0,0,0" />
+            <Label x:Name="lblorderstate" FontSize="20" FontFamily="facompa" Text="We're processing your request, please wait..." Margin="20" HorizontalOptions="CenterAndExpand" TextColor="WhiteSmoke"/>
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Frame  
+                   BorderColor="#1C375C" 
+                   HasShadow="True" 
+                   CornerRadius="50" 
+                   HeightRequest="1000" 
+                VerticalOptions="FillAndExpand" >
+
+                <Grid HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="FillAndExpand" 
+                      RowSpacing="5" Padding="20,30,20,0"
+                      RowDefinitions="AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO,AUTO">
+
+                    <Label Grid.Row="0"  Text="Welcome Back!"
+                       Margin="0,-40,0,0"
+                           FontSize="40" FontAttributes="Bold" 
+                       FontFamily="facompa"
+                           TextColor="#2192FF" 
+                           HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="1" Margin="0,-10,0,0" 
+                           Text="Login in to account" 
+                            FontSize="20"
+                       FontFamily="facompa"
+                           TextColor="#2192FF" 
+                           HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Text="Email" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="3"/>
+                    <Entry Grid.Row="4" Placeholder="Email" 
+                       x:Name="txtemail"
+                       FontFamily="facompa"
+                           Margin="0,0,0,0" 
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"/>
+
+                    <Label Text="Password" TextColor="#2192FF" FontFamily="facompa" FontSize="15" Grid.Row="5"/>
+                    <Entry Grid.Row="6" 
+                           Placeholder="Password"
+                           x:Name="txtpass"
+                       FontFamily="facompa"
+                           IsPassword="True" 
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="FillAndExpand"/>
+
+                    <Button Grid.Row="7" 
+                            Text="Login"
+                        FontFamily="facompa"
+                            TextColor="White" 
+                            x:Name="BTNlogin"
+                        Clicked="BTNlogin_Clicked"
+                            BackgroundColor="#2192FF" CornerRadius="20"/>
+
+                    <Label Grid.Row="8" Margin="0,0,0,0" 
+                       FontFamily="facompa"
+                           Text="Or Sign In With" 
+                           HorizontalOptions="CenterAndExpand"/>
+
+                    <StackLayout Grid.Row="9" Margin="0,10,0,8" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40">
+
+                        <Image Source="fb.png" WidthRequest="30"
+                               HeightRequest="30" Aspect="AspectFit"/>
+                        <Image Source="google.png" WidthRequest="30"
+                               HeightRequest="30" Aspect="AspectFit"/>
+                        <Image Source="twitter.png" WidthRequest="30"
+                               HeightRequest="30" Aspect="AspectFit"/>
+                        <Image Source="yahoo.png" WidthRequest="30"
+                               HeightRequest="30" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <Label Grid.Row="10" FontFamily="facompa" Margin="0,-10,0,0" Text="Don't have an account? Sign up here" HorizontalOptions="CenterAndExpand"/>
+
+                    <Button Grid.Row="11"
+                        FontFamily="facompa"
+                            Text="Sign Up" 
+                            BackgroundColor="#2192FF" 
+                            TextColor="White" 
+                            Margin="0,0,0,0"
+                            CornerRadius="20" 
+                            x:Name="signup"                       
+                            Clicked="signup_Clicked"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

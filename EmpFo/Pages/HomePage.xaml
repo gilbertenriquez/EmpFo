@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmpFo.Pages.HomePage"
+             xmlns:Skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:model="clr-namespace:EmpFo.Models"
+             BackgroundImageSource="bg3.jpg"
+             
+             >
+    
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="" Text="Edit Employee" x:Name="EditEmploy"
+                     Order="Secondary"  Clicked="EditEmploy_Clicked"/>
+
+        <ToolbarItem IconImageSource="" Text="Delete Employee" x:Name="DeleteEmployess"
+                     Order="Secondary"  Clicked="DeleteEmployess_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    
+    
+    
+    
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+        <Frame HeightRequest="100" CornerRadius="50" BackgroundColor="#06283D"
+               Margin="0,0,0,0"/>
+
+        <Label Grid.Row="0" 
+               Text="Employee List"              
+               Margin="20"
+               FontSize="Large"
+               FontAttributes="Bold"
+               VerticalOptions="Center" 
+               TextColor="White"/>
+
+        <ImageButton Grid.Row="0"
+                     HorizontalOptions="EndAndExpand" 
+                     Source="add.png" 
+                     HeightRequest="30"
+                     WidthRequest="40"
+                     VerticalOptions="Center"
+                     Margin="20"
+                     BackgroundColor="Transparent"
+                     Clicked="ImageButton_Clicked"/>
+
+        <SearchBar Grid.Row="1" 
+                   Margin="10"
+                   Placeholder="Find Employee" 
+                   x:Name="SearchBar"
+                   BackgroundColor="#06283D" 
+                   PlaceholderColor="White"
+                   SearchButtonPressed="SearchBar_SearchButtonPressed"  
+                   />
+
+        <Label Grid.Row="2" 
+               BackgroundColor="{StaticResource Primary}" 
+               x:Name="loader" TextColor="{StaticResource TextSoft}"
+               HorizontalOptions="CenterAndExpand"/>
+        <CollectionView Grid.Row="3" x:Name="Employeelist" SelectionMode="Single"
+                       SelectionChanged="Employeelist_SelectionChanged">
+            
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" />
+
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="2">
+                            <!--<SwipeView HeightRequest="96" 
+                                   BackgroundColor="Transparent"                   
+                                   IsClippedToBounds="True">
+                            
+            <SwipeView.LeftItems>-->
+                            <!--<SwipeItems Mode="Reveal">
+            <SwipeItemView BackgroundColor="Transparent" 
+                           Margin="5" 
+                           x:Name="itemOnEdit">
+            <StackLayout Margin="5">
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+            <Image Source="edit" HeightRequest="20" WidthRequest="20" Aspect="AspectFit" />-->
+                            <!--<Label Text="Edit" HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="{StaticResource TextColorWhite}" 
+                   FontSize="Micro"/>
+                
+            </StackLayout>
+            </StackLayout>
+            </SwipeItemView>
+            </SwipeItems>-->
+                            <!--</SwipeView.LeftItems>-->
+
+
+                            <Border 
+                    
+                   HeightRequest="200" 
+                           
+                   Padding="0" Margin="2"
+                            HorizontalOptions="Center"
+                   
+                   BackgroundColor="#06283D" 
+                   >
+
+                                <!--Must add expander so the client can view if the renter has an advance payment-->
+
+                                <Grid ColumnDefinitions="Auto, *">
+                                    <Line Grid.Column="0" 
+                        WidthRequest="5" 
+                        />
+
+                                    <StackLayout Grid.Column="1" Margin="0" 
+                               Orientation="Horizontal" 
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="Transparent">
+
+                                   <Skia:SKLottieView Source="var1.json"                              
+                                                      RepeatCount="-1"                               
+                                                      HorizontalOptions="Center"                                                             
+                                                      HeightRequest="400" WidthRequest="120"/>
+                                        <Grid RowSpacing="0" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                              ColumnDefinitions="Auto, *,*,*,*,*">
+
+
+
+                                            <Label VerticalOptions="CenterAndExpand" 
+                                                   FontFamily="facompa"
+                                                   Text="First Name:"                          
+                                                   TextColor="{StaticResource TextSoft}"                          
+                                                   FontSize="Medium" 
+                                                   LineBreakMode="TailTruncation"                         
+                                                   HorizontalOptions="Start" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="0" />
+
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding eFName}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+
+
+                                            <Label VerticalOptions="CenterAndExpand" Text="MiddleName:"
+                                                   FontFamily="facompa"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" />
+
+                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding eMid}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+
+
+                                            <Label VerticalOptions="CenterAndExpand" Text="LastName:"
+                                                   FontFamily="facompa"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" />
+
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding eLName}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+
+                                            <Label VerticalOptions="CenterAndExpand" Text="Home Address:"
+                                                   FontFamily="facompa"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="3" Grid.Column="0" />
+
+                                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding eAddress}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                            <Label VerticalOptions="CenterAndExpand" Text="Email:"
+                                                   FontFamily="facompa"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" />
+
+                                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding eMail}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Phone #/Telephone #:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="5" Grid.Column="0" />
+
+                                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding ePhone}"
+                                                   FontSize="Medium"
+                                               FontFamily="facompa"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+
+                                        <Label VerticalOptions="CenterAndExpand" Text="Position:"
+                                                   TextColor="{StaticResource TextSoft}"
+                                               FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Start" Grid.Row="6" Grid.Column="0" />
+
+                                            <Label Grid.Row="6" Grid.Column="1" Text="{Binding ePosition}"
+                                                   FontFamily="facompa"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold" 
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource TextColorWhite}" />
+
+
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Border>
+
+                            <!--</SwipeView>-->
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="EmpFo.Pages.WelcomePage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundImageSource="bg3.jpg">
+    <VerticalStackLayout>
+
+
+        <!--xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"-->
+       
+
+        <Grid           
+            RowDefinitions="*, Auto, Auto, Auto">
+
+            <Skia:SKLottieView Source="hello-office-waves.json"
+                               Grid.Row="0"
+                               RepeatCount="-1"                               
+                               HorizontalOptions="Center"
+                               Margin="0, 10, 0, 10"
+                               HeightRequest="400" WidthRequest="500"/>
+
+            <Label
+                Grid.Row="1"
+                FontFamily="facompa"
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                Margin="30, 20, 30, 10"               
+                Text="Manage your employee's in one place"
+                TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}}"
+                />
+            <Label
+                Grid.Row="2"
+                FontFamily="facompa"
+                HorizontalTextAlignment="Center"
+                Margin="0, 0, 0, 20"
+                Text="Organize your Employee's with Empfo app."              
+                TextColor="{AppThemeBinding Dark={StaticResource DarkSecondaryTextColor}}"/>
+            <Button
+                VerticalOptions="End"
+                TextColor="White"
+                x:Name="btnlog"
+                FontFamily="facompa"
+                BackgroundColor="#2192FF"
+               Clicked="btnlog_Clicked"
+                Grid.Row="3"
+                Margin="20, 50, 20, -80"
+                Text="GET STARTED"
+                />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
